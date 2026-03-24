@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素地牢 (Pixel Dungeon)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <div id="game-container">
+            <header>
+            <h1>像素地牢 🧙‍♂️</h1>
+            <div id="status">
+                <span class="stat">層數: <span id="level">1</span></span>
+                <span class="stat">血量: <span id="hp">20/20</span></span>
+                <span class="stat">飢餓: <span id="hunger">100</span></span>
+                <span class="stat">🧪 <span id="potions">0/1</span></span>
+                <span class="stat">💰 <span id="gold">0</span></span>
+                <span id="key-status" class="hidden">🗝️</span>
+            </div>
+        </header>
+        <div id="game-board"></div>
+        <div id="message-log">歡迎來到像素地牢！尋找鑰匙並前往出口。</div>
+        
+        <div id="game-over-screen" class="hidden">
+            <h2>遊戲結束！</h2>
+            <p>您生存到了第 <span id="final-level">1</span> 層</p>
+            <button id="restart-btn" onclick="restartGame()">重新挑戰</button>
+        </div>
+        
+        <div id="shop-screen" class="hidden">
+            <h2>商人 (Shop)</h2>
+            <div class="shop-item">
+                <span class="shop-desc">🩸 最大生命 +5 (目前: <span id="shop-maxhp">20</span>)</span>
+                <button onclick="buyHp()" id="btn-buy-hp">購買 (<span id="price-hp">20</span> 金幣)</button>
+            </div>
+            <div class="shop-item">
+                <span class="shop-desc">⚔️ 攻擊力 +1 (目前: <span id="shop-atk">1</span>)</span>
+                <button onclick="buyAtk()" id="btn-buy-atk">購買 (<span id="price-atk">40</span> 金幣)</button>
+            </div>
+            <div class="shop-item">
+                <span class="shop-desc">🧪 藥水上限 +1 (目前: <span id="shop-maxpotions">1</span>)</span>
+                <button onclick="buyPotionSlot()" id="btn-buy-potionslot">購買 (<span id="price-potionslot">30</span> 金幣)</button>
+            </div>
+            <p class="shop-gold">持有金幣: <span id="shop-current-gold">0</span></p>
+            <button id="leave-shop-btn" onclick="leaveShop()">離開商店並前往下一層</button>
+        </div>
+        </div>
+        
+        <div id="game-controls">
+            <div class="control-group">
+                <span>🔊 音量:</span>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.2">
+            </div>
+            <div class="instructions">
+                <h3>📖 操作說明</h3>
+                <p>
+                    <b>[方向鍵]</b> 或 <b>[WASD]</b>：移動 / 攻擊<br>
+                    <b>[H]</b> 或 <b>[1]</b>：喝下藥水恢復生命<br>
+                    碰觸 🚪 進入下一層結算<br>
+                    每 10 層進入商店，每 20 層遭遇 BOSS 戰鬥！
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
