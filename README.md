@@ -1,4 +1,5 @@
 # 像素地牢 (Pixel Roguelike) 🧙‍♂️
+https://bobycm.github.io/pixel-roguelike/
 ## 🎮 How to Play
 ### 操作說明
 | 動作 | 快捷鍵 |
